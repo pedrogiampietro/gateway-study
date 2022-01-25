@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+
+import { StripeContainer } from './components/StripeContainer';
+import SpatulaImg from './assets/spatula.jpg';
+
 import './App.css';
 
-function App() {
+export function App() {
+  const [showItem, setShowItem] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>The Spatula Store</h1>
+      {showItem ? (
+        <StripeContainer />
+      ) : (
+        <>
+          <h3>R$ 10,00</h3>
+          <img src={SpatulaImg} alt="Espatula" />
+          <button onClick={() => setShowItem(true)}>Purchase</button>
+        </>
+      )}
     </div>
   );
 }
-
-export default App;
